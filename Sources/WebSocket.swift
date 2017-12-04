@@ -209,7 +209,7 @@ open class FoundationStream : NSObject, WSStream, StreamDelegate  {
     }
     
     public func write(data: Data) -> Int {
-        guard let outStream = outputStream else {return 0}
+        guard let outStream = outputStream else {return -1}
         let buffer = UnsafeRawPointer((data as NSData).bytes).assumingMemoryBound(to: UInt8.self)
         return outStream.write(buffer, maxLength: data.count)
     }
